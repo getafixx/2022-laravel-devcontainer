@@ -8,11 +8,11 @@ FROM php:8.0-cli
 
 RUN apt-get update
 
-RUN apt-get install  -y \
-    git unzip vim wget libmcrypt-dev libreadline-dev \
-    bash-completion iputils-ping build-essential git-flow \
-    ssh dos2unix ssmtp rsync software-properties-common \
-    bash curl git vim
+#RUN apt-get install  -y \
+#    git unzip vim wget libmcrypt-dev libreadline-dev \
+#    bash-completion iputils-ping build-essential git-flow \
+#    ssh dos2unix ssmtp rsync software-properties-common \
+#    bash curl git vim
 
 #RUN add-apt-repository ppa:ondrej/php
 #RUN apt-get update
@@ -25,16 +25,16 @@ RUN apt-get install  -y \
 #
 
 
-RUN sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php/8.0/fpm/php.ini
-RUN sed -i 's/post_max_size = 8M/post_max_size = 50M/' /etc/php/8.0/fpm/php.ini
-RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/' /etc/php/8.0/fpm/php.ini
-
-# Install Composer
+#RUN sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php/8.0/fpm/php.ini
+#RUN sed -i 's/post_max_size = 8M/post_max_size = 50M/' /etc/php/8.0/fpm/php.ini
+#RUN sed -i 's/upload_max_filesize = 2M/upload_max_filesize = 50M/' /etc/php/8.0/fpm/php.ini
+#
+## Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer --2
-
-RUN curl -LO https://deployer.org/deployer.phar
-RUN mv deployer.phar /usr/local/bin/dep
-RUN chmod +x /usr/local/bin/dep
+#
+#RUN curl -LO https://deployer.org/deployer.phar
+#RUN mv deployer.phar /usr/local/bin/dep
+#RUN chmod +x /usr/local/bin/dep
 
 RUN apt-get nodejs npm
 
