@@ -6,7 +6,7 @@ FROM php:8.0-cli
 #RUN addgroup -g 1000 -S vsuser && adduser -u 1000 -D vsuser -G user
 # Install quality-of-life packages.
 
-#RUN apt-get update
+RUN apt-get update
 
 RUN apt-get install  -y \
     git unzip vim wget libmcrypt-dev libreadline-dev \
