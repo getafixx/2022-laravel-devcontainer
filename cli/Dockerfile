@@ -6,7 +6,7 @@ FROM php:8.0-cli
 #RUN addgroup -g 1000 -S vsuser && adduser -u 1000 -D vsuser -G user
 # Install quality-of-life packages.
 
-RUN apt-get update
+#RUN apt-get update
 
 RUN apt-get install  -y \
     git unzip vim wget libmcrypt-dev libreadline-dev \
@@ -14,8 +14,8 @@ RUN apt-get install  -y \
     ssh dos2unix ssmtp rsync software-properties-common \
     bash curl git vim
 
-RUN add-apt-repository ppa:ondrej/php
-RUN apt-get update
+#RUN add-apt-repository ppa:ondrej/php
+#RUN apt-get update
 
 #RUN apt-get install -y --fix-missing php8.0 php8.0-curl php8.0-gd php8.0-mbstring \
 #    php8.0-zip php8.0-mysql php8.0-xml php8.0-fpm php8.0-imagick \
@@ -24,7 +24,6 @@ RUN apt-get update
 #    php-pear php8.0-gmp php8.0-bcmath php-soap php8.0-sqlite3     
 #
 
-RUN apt-get nodejs npm
 
 RUN sed -i 's/short_open_tag = Off/short_open_tag = On/' /etc/php/8.0/fpm/php.ini
 RUN sed -i 's/post_max_size = 8M/post_max_size = 50M/' /etc/php/8.0/fpm/php.ini
@@ -36,6 +35,8 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
 RUN curl -LO https://deployer.org/deployer.phar
 RUN mv deployer.phar /usr/local/bin/dep
 RUN chmod +x /usr/local/bin/dep
+
+RUN apt-get nodejs npm
 
 #RUN apk add bash curl git vim
 # Install composer for php deps.
